@@ -1,0 +1,22 @@
+{
+  "name": "open-to-intern",
+  "version": "1.0.0",
+  "description": "\"Intern shala project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\"Open-To-Intern\""
+  },
+  "author": "\"Shubham Mohite\"",
+  "license": "ISC",
+  "dependencies": {
+    "email-validator": "^2.0.4",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2",
+    "nodemon": "^2.0.22",
+    "valid-url": "^1.0.9"
+  }
+}
