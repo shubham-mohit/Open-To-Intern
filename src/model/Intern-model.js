@@ -6,24 +6,25 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const InternSchema = new mongoose.Schema({
     name : {
-        types : String,
-        required : true,
+        type : String,
+        required : true
     },
     email : {
-        types : String,
+        type : String,
         unique : true,
         required: true
     },
     mobile : {
-        types : Number,
+        type: String,
         unique : true,
+        required: true
     },
     collegeId : {
-        types : ObjectId,
-        ref : "collegemodel"
+        type : ObjectId,
+        ref : "collegemodel",
     },
     isDeleted : {
-        types : Boolean,
+        type : Boolean,
         default : false
     }
 },{timestamp : true})

@@ -1,3 +1,4 @@
+const InternModel = require('../model/Intern-model')
 const collegeModel = require('../model/college-model')
 const validurl = require('valid-url')
 
@@ -26,4 +27,27 @@ const createcollege = async function(req,res) {
 }
 
 
+const getInternData = async function(req,res){
+    let DataFromParam = req.params.collegeName
+    const checkData = await collegeModel.findOne({name : DataFromParam})
+    if(! checkData) {return res.status(400).send("College not found")}
+    else{
+        let collegeIdFromCheckData = checkData._id
+        const findIntern = await InternModel.find({collegeId : collegeIdFromCheckData}).select({id_:1,name:1,email:1,mobile:1})
+        // console.log(findIntern)
+        if(! findIntern) {return res.status(400).send("No one is applied for this college")}
+        else{
+               Data = {
+                name : checkData.name,
+                fullName : checkData.fullName,
+                logoLink: checkData.logoLink,
+                Intrested : findIntern
+               }
+        }
+        res.status(200).send({Data : Data})
+    }
+
+}
+
 module.exports.createcollege = createcollege
+module.exports.getInternData = getInternData
