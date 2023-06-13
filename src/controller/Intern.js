@@ -13,10 +13,10 @@ const createIntern = async function (req,res){
     try {
     const Data = req.body
     let {name, email, mobile, collegeName } = Data
-        if(!isValidValue(name)) {return res.status(400).send({status:false,message:"Name is not provided"})}
-        if(!isValidValue(email)) {return res.status(400).send({status:false,message:"Email is not provided"})}
-        if(!isValidValue(mobile)) {return res.status(400).send({status:false,message:"Mobile Number is not provided"})}
-        if(!isValidValue(collegeName)) {return res.status(400).send({status:false,message:"CollegeName is not provided"})}
+        if(!isValidValue(name) || (!name)) {return res.status(400).send({status:false,message:"Name is not provided"})}
+        if(!isValidValue(email) || (!email)) {return res.status(400).send({status:false,message:"Email is not provided"})}
+        if(!isValidValue(mobile) || (!mobile)) {return res.status(400).send({status:false,message:"Mobile Number is not provided"})}
+        if(!isValidValue(collegeName)|| (!collegeName)) {return res.status(400).send({status:false,message:"CollegeName is not provided"})}
         if(!validator.validate(email)) {return res.status(400).send({status:false,message:"Email Id is not valid"})}
         const checkEmailExist = await InternModel.findOne({email:email})
         if(checkEmailExist) {return res.status(400).send({status: false ,message:"Email already in use"})}

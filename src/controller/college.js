@@ -12,9 +12,9 @@ const createcollege = async function(req,res) {
     const Data = req.body
     let {name, fullName, logoLink} = Data
     try {
-        if(!isValidValue(name)) {return res.status(400).send({state:false, message: "Name is not provided"})}
-        if(!isValidValue(fullName)) {return res.status(400).send({state:false, message: "FullName is not provided"})}
-        if(!isValidValue(logoLink)) {return res.status(400).send({state:false, message: "Logolink is not provided"})}
+        if(!isValidValue(name) || (!name)) {return res.status(400).send({state:false, message: "Name is not provided"})}
+        if(!isValidValue(fullName) || (!fullNmae)) {return res.status(400).send({state:false, message: "FullName is not provided"})}
+        if(!isValidValue(logoLink) || (!logoLink)) {return res.status(400).send({state:false, message: "Logolink is not provided"})}
         if(!validurl.isWebUri(logoLink)) {return res.status(400).send("Please provid a valid URL")}
         else{
             const checkUnique = await collegeModel.findOne({name: name})
